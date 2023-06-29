@@ -4,6 +4,9 @@ import Card from "./../../components/Card";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiArrowToLeft, BiArrowToRight } from "react-icons/bi";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { BiSolidPencil } from "react-icons/bi";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const products = [
   {
@@ -101,7 +104,6 @@ const Beranda = () => {
   const [newProduct, setNewProduct] = useState();
   const [idSquence, setIdSequence] = useState(products.length);
 
-
   const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
@@ -128,7 +130,7 @@ const Beranda = () => {
   return (
     <div>
       <div className="wrapper-action">
-      <button onClick={() => setNewProduct({ id: idSquence })}>Tambah</button>
+        <button onClick={() => setNewProduct({ id: idSquence })}>Tambah</button>
         {newProduct && (
           <form
             className="card dialog"
@@ -239,6 +241,17 @@ const Beranda = () => {
                   Rp. {product.price.toLocaleString("Id-ID")}
                 </p>
                 <p className="card-category">({product.category})</p>
+                <div>
+                  <button>
+                    <MdOutlineAddShoppingCart />
+                  </button>
+                  <button>
+                    <BiSolidPencil />
+                  </button>
+                  <button>
+                    <BsFillTrashFill />
+                  </button>
+                </div>
               </Card>
             );
           })}
